@@ -3,28 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>画板</title>
-	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 </head>
 <body>
-    <div id="canvas">
-	</div>
-	<script type="text/javascript">
-		canvas.onmousemove = (e)=>{
-			console.log(e.clientX)
-			console.log(e.clientY)
-			let div = document.createElement('div');
-			div.style.position = 'absolute'
-			div.style.left = e.clientX + 'px'
-			div.style.top = e.clientY + 'px'
-			// div.style.border = '1px solid red'
-			div.style.width = '6px'
-			div.style.height = '6px'
-			div.style.marginLeft = '-3px'
-			div.style.marginTop = '-3px'
-			div.style.borderRadius = '50%'
-			div.style.backgroundColor = 'black'
-			canvas.appendChild(div)
-		}
-	</script>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+    let canvas = document.getElementById('canvas');
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+    let ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = "rgb(200,0,0)";
+
+    canvas.onmousemove = (e) => {
+        ctx.fillRect(e.clientX - 5, e.clientY - 5, 10, 10)
+    }
+</script>
 </body>
 </html>
